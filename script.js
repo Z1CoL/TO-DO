@@ -67,6 +67,7 @@ const data = [
     imgUrl:
       "https://mgl.gogo.mn/newsn/thumbnail/1000/images/c/2025/08/-26082025-1756171803-1242587371-oyQRbjRqhYaRpziTXxZV.jpg",
     genre: "politics",
+    date: "2025-08-26"
   },
   {
     title:
@@ -75,6 +76,7 @@ const data = [
     imgUrl:
       "https://mgl.gogo.mn/newsn/thumbnail/1000/images/c/2022/02/-10022022-1644488451-330897989-Tumurzaya2-165547-6891419671.jpeg",
     genre: "politics",
+    date: "2025-08-26"
   },
   {
     title:
@@ -83,6 +85,7 @@ const data = [
     imgUrl:
       "https://mongolia.gov.mn/storage/posts/August2025/viber_image_2025-08-25_18-38-12-016.jpg",
     genre: "sports",
+    date: "2025-08-26"
   },
   {
     title:
@@ -91,6 +94,7 @@ const data = [
     imgUrl:
       "https://mgl.gogo.mn/newsn/thumbnail/1000/images/c/2025/08/334084-25082025-1756113071-1792768380-photo.JPG",
     genre: "sports",
+    date: "2025-08-26"
   },
   {
     title:
@@ -99,6 +103,7 @@ const data = [
     imgUrl:
       "https://mgl.gogo.mn/newsn/images/ck/2025/08/04/0N2A9807-194929-132573395320250804194949.jpeg",
     genre: "politics",
+    date: "2025-08-26"
   },
   {
     title:
@@ -107,6 +112,7 @@ const data = [
     imgUrl:
       "https://mgl.gogo.mn/newsn/images/ck/2025/08/25/Screenshot_2025-08-23_160627-161130-1070011717.jpeg",
     genre: "sports",
+    date: "2025-08-26"
   },
   {
     title:
@@ -115,6 +121,7 @@ const data = [
     imgUrl:
       "https://mgl.gogo.mn/newsn/images/ck/2025/08/25/belcheer-161156-494597799.jpeg",
     genre: "politics",
+    date: "2025-08-26"
   },
 ];
 
