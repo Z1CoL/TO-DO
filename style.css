@@ -3,30 +3,43 @@
 }
 
 body {
-  width: 300px;
-  height: 500px;
   background-color: azure;
 }
 
 .card {
   margin-top: 30px;
-  width: 300px;
-  height: 500px;
-  background-color: pink;
+  width: 700px;
+  height: 300px;
+  background-color: whitesmoke;
   background-size: cover;
   border-radius: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  overflow: hidden;
+}
+.descriptions {
 }
 
-h2 {
+h3 {
   text-align: center;
 }
 
 img {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   border-radius: 5px;
+}
+
+p {
+  font-size: large;
+  margin: 20px;
+}
+
+.sports-btn {
+  width: 70px;
+  height: 30px;
+}
+
+.politics-btn {
+  width: 70px;
+  height: 30px;
 }
