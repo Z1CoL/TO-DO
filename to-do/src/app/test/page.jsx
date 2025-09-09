@@ -29,4 +29,26 @@ export default function Home() {
       </button>
     </div>
   );
+
 }
+
+export default function App(props) {
+  const [color, setColor] = useState("gray");
+
+  return (
+    <button
+      onClick={() => setColor("#3c82f6")}
+      style={{
+        backgroundColor: color,
+        color: "white",
+        padding: "10px 20px",
+        border: "none",
+        borderRadius: "8px",
+        cursor: "pointer",
+      }}
+    >
+      Click me
+    </button>
+  );
+}
+
