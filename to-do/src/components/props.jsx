@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function checkList(para) {
+export function CheckList(para) {
   return (
     <div>
       <div className="flex gap-[10px] p-[16px] cursor-pointer rounded-[6px] items-center mb-[20px] justify-center bg-[#f9fafb] w-[345px] h-[62px]">
