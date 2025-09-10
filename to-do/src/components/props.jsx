@@ -8,15 +8,18 @@ export function CheckList(para) {
       <div className="flex gap-[10px] p-[16px] cursor-pointer rounded-[6px] items-center mb-[20px] justify-center bg-[#f9fafb] w-[345px] h-[62px]">
         <input type="checkbox" />
         <p></p>
-        <button className="px-[10px] py-[3px] mr-[8px] rounded-[8px] cursor-pointer text-[#ef4444] bg-[#fef2f2] text-[]">Delete</button>
+        <button className="px-[10px] py-[3px] mr-[8px] rounded-[8px] cursor-pointer text-[#ef4444] bg-[#fef2f2] text-[]">
+          Delete
+        </button>
       </div>
     </div>
   );
 }
 
 export function Button() {
-  const [active, setActive] = useState(null);
-  const buttons = ["All", "Active", "Completed"];
+  const [active, setActive] = useState(0);
+    const buttons = ["All", "Active", "Completed"];
+  
 
   return (
     <div className="flex">
@@ -37,6 +40,3 @@ export function Button() {
     </div>
   );
 }
-
-
-

@@ -2,18 +2,9 @@
 import Image from "next/image";
 import { Button } from "@/components/props";
 import { CheckList } from "@/components/props";
-import { useState } from "react";
 
 export default function Home() {
-  const [tasks, setTasks] = useState([]);
-  const [inputValue, setInputValue] = useState("");
 
-  const addTask = () => {
-    if ((inputValue, setInputValue.trim() !== "")) {
-      setTasks([...tasks, inputValue]);
-      setInputValue("");
-    }
-  };
 
   return (
     <div>
@@ -27,13 +18,10 @@ export default function Home() {
             <input
               placeholder="Add a new task..."
               type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
               className="border-[1px] rounded-[6px] text-black border-solid border-[#e4e4e7] outline-none bg-[#ffff] px-[16px] w-[280px] h-[40px]"
             ></input>
 
             <button
-              onClick={addTask}
               className="bg-[#3c82f6] text-[#f9f9f9] text-sm rounded-[6px] cursor-pointer color-[#f9f9f9] w-[59px] h-[40px] border-none text-[14px]"
             >
               Add
