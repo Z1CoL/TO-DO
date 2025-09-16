@@ -44,14 +44,17 @@ import { ProductCard } from "@/components1/props2";
 
 const data = [
   {
+    id: 1,
     name: "iphone17",
     price: 18999,
   },
   {
+    id: 2,
     name: "MacBook",
     price: 15999,
   },
   {
+    id: 3,
     name: "car",
     price: 111111,
   },
@@ -59,10 +62,22 @@ const data = [
 
 const Page = () => {
   const [products, setProducts] = useState(data);
+
+  const handleRemoveProd = (id) => {
+    const newProducts = products.filter((product) => product.id !== id);
+    setProducts([...newProducts]);
+  };
+
   return (
     <div className="p-4 flex gap-2 flex-wrap">
       {products.map((product) => {
-        return <ProductCard key={product.name} product={product} />;
+        return (
+          <ProductCard
+            key={product.name}
+            product={product}
+            handleRemoveProd={handleRemoveProd}
+          />
+        );
       })}
     </div>
   );

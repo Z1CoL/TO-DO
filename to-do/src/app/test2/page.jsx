@@ -18,14 +18,13 @@ export default function Home() {
 
   return (
     <div>
-        {/*  text ee bichin  */}
       <input
         type="text"
         placeholder="type here ..."
         onChange={handleOnChange}
         value={inputValue}
       />
-        {/*  */}
+        
       {todos.map((el, index) => {
         return <p key={index}>{el}</p>;
       })}

@@ -10,19 +10,19 @@ import { useState } from "react";
 export default function Home() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [outValue, setOutValue] = useState();
 
   const handleOnChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleOnClick = () => {
+    if (inputValue === "") return;
     setTodos([...todos, inputValue]);
     setInputValue("");
   };
 
-  const outputValue = () => {
-    setOutValue(<CheckList1 />);
+  const handleDelete = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
   };
 
   return (
@@ -40,33 +40,41 @@ export default function Home() {
               onChange={handleOnChange}
               value={inputValue}
               className="border-[1px] rounded-[6px] text-black border-solid border-[#e4e4e7] outline-none bg-[#ffff] px-[16px] w-[280px] h-[40px]"
-            ></input>
-
+            />
+            {/* 
             {todos.map((el, index) => {
               return <p key={index}>{el}</p>;
-            })}
+            })} */}
 
             <button
-              onClick={outputValue}
-              className="bg-[#3c82f6] text-[#f9f9f9] text-sm rounded-[6px] cursor-pointer color-[#f9f9f9] w-[59px] h-[40px] border-none text-[14px]"
+              onClick={handleOnClick}
+              className="bg-[#3c82f6] ml-[6px] text-[#f9f9f9] text-sm rounded-[6px] cursor-pointer color-[#f9f9f9] w-[59px] h-[40px] border-none text-[14px]"
             >
               Add
             </button>
           </div>
 
-          {todos.map((todo, index) => {
-            <CheckList1 key={index} task={todo} />;
-          })}
-
           <div className=" w-[345px] h-[32px] my-[20px] flex md:gap-[6px]">
             <Button></Button>
           </div>
 
-          {/* <p className="text-[14px] text-[#6b7280] items-center pt-[12px] pb-[40px] font-[550]">
-            No tasks yet. Add one above!
-          </p> */}
+          <div className="mt-4 w-full flex flex-col gap-2">
+            {todos.map((todo, index) => (
+              <CheckList1
+                key={index}
+                task={todo}
+                onDelete={() => handleDelete(index)}
+              />
+            ))}
+          </div>
 
-          <p className="text-[12px] text-[#6b7280] font-[550]">
+          {todos.length === 0 && (
+            <p className="text-[14px] text-[#6b7280] items-center pt-[12px] pb-[40px] font-[550]">
+              No tasks yet. Add one above!
+            </p>
+          )}
+
+          <p className="text-[12px] text-[#6b7280] pt-[10px] font-[550]">
             Powered by{" "}
             <a
               href="https://pinecone.mn/"

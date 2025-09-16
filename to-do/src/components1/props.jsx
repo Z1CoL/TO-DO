@@ -179,21 +179,21 @@ export const AddProduct = (props) => {
   return (
     <div>
       <input
+        type="text"
         value={name}
         onChange={nameChangeHandler}
-        type="text"
         placeholder="name"
         className="border-2"
       />
       <input
+        type="number"
         value={price}
         onChange={priceChangeHandler}
-        type="number"
         placeholder="price"
         className="border-2"
       />
-      <button onClick={() => prodAddHandler(name, price)} className="border-2">
-        Add
+      <button onClick={() => prodAddHandler(name,price)} className="border-2">
+        Add 
       </button>
     </div>
   );

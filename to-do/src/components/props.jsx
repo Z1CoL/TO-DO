@@ -19,39 +19,26 @@ export function CheckList({ task }) {
   );
 }
 
-export function CheckList1({ task }) {
-  return (
-    <div>
-      <div className="flex w-[345px] h-[62px] p-[16px] justify-between items-center bg-[#F3F4F6] rounded-[6px]">
-        <div className="flex items-center gap-[10px]">
-          <input
-            type="checkbox"
-            className="w-[20px] h-[20px] bg-[#FFF] rounded-[2px] border-[#767676]"
-          />
-          <p className="text-[#000]">{ task }</p>
-        </div>
+export function CheckList1({ task, onDelete }) {
+  const [isChecked, setIsChecked] = useState(false);
 
-        <button className="px-[10px] py-[3px] mr-[8px] rounded-[8px] cursor-pointer text-[#ef4444] bg-[#fef2f2] text-[]">
-          Delete
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export function CheckList2(para) {
   return (
     <div>
       <div className="flex w-[345px] h-[62px] p-[16px] justify-between items-center bg-[#F9FAFB] rounded-[6px]">
         <div className="flex items-center gap-[10px]">
           <input
             type="checkbox"
+            checked={isChecked}
+            onChange={(e) => setIsChecked(e.target.checked)}
             className="w-[20px] h-[20px] bg-[#FFF] rounded-[2px] border-[#767676]"
           />
-          <p className="line-through text-[#000]"> afdaf</p>
+          <p className={isChecked ? "line-through text-black" : ""}>{task}</p>
         </div>
 
-        <button className="px-[10px] py-[3px] mr-[8px] rounded-[8px] cursor-pointer text-[#ef4444] bg-[#fef2f2] text-[]">
+        <button
+          onClick={onDelete}
+          className="px-[10px] py-[3px] mr-[8px] rounded-[8px] cursor-pointer text-[#ef4444] bg-[#fef2f2] text-[]"
+        >
           Delete
         </button>
       </div>
