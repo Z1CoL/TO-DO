@@ -1,15 +1,13 @@
 "use client";
-import Image from "next/image";
-import { Button } from "@/components/props";
-import { CheckList } from "@/components/props";
-import { CheckList1 } from "@/components/props";
-import { CheckList2 } from "@/components/props";
-import { CheckList3 } from "@/components/props";
+import { Button } from "@/components/Tasks";
+import { TaskItems } from "@/components/Tasks";
+
 import { useState } from "react";
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [filter, setFilter] = useState("All"); // 👈 filter state
 
   const handleOnChange = (event) => {
     setInputValue(event.target.value);
@@ -17,13 +15,26 @@ export default function Home() {
 
   const handleOnClick = () => {
     if (inputValue === "") return;
-    setTodos([...todos, inputValue]);
+    setTodos([...todos, { text: inputValue, completed: false }]); // 👈 todo-г обьект болголоо
     setInputValue("");
   };
 
   const handleDelete = (index) => {
     setTodos(todos.filter((_, i) => i !== index));
   };
+
+  const handleToggle = (index) => {
+    setTodos(
+      todos.map((todo, i) =>
+        i === index ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "Active") return !todo.completed;
+    if (filter === "Completed") return todo.completed;
+    return true;
+  });
 
   return (
     <div>
@@ -41,28 +52,26 @@ export default function Home() {
               value={inputValue}
               className="border-[1px] rounded-[6px] text-black border-solid border-[#e4e4e7] outline-none bg-[#ffff] px-[16px] w-[280px] h-[40px]"
             />
-            {/* 
-            {todos.map((el, index) => {
-              return <p key={index}>{el}</p>;
-            })} */}
 
             <button
               onClick={handleOnClick}
-              className="bg-[#3c82f6] ml-[6px] text-[#f9f9f9] text-sm rounded-[6px] cursor-pointer color-[#f9f9f9] w-[59px] h-[40px] border-none text-[14px]"
+              className="bg-[#3c82f6] ml-[6px] text-[#f9f9f9] text-sm rounded-[6px] cursor-pointer w-[59px] h-[40px] border-none text-[14px]"
             >
               Add
             </button>
           </div>
 
           <div className=" w-[345px] h-[32px] my-[20px] flex md:gap-[6px]">
-            <Button></Button>
+            <Button filter={filter} setFilter={setFilter} />
           </div>
 
           <div className="mt-4 w-full flex flex-col gap-2">
-            {todos.map((todo, index) => (
-              <CheckList1
+            {filteredTodos.map((todo, index) => (
+              <TaskItems
                 key={index}
-                task={todo}
+                task={todo.text}
+                completed={todo.completed}
+                onToggle={() => handleToggle(index)}
                 onDelete={() => handleDelete(index)}
               />
             ))}
@@ -73,16 +82,6 @@ export default function Home() {
               No tasks yet. Add one above!
             </p>
           )}
-
-          <p className="text-[12px] text-[#6b7280] pt-[10px] font-[550]">
-            Powered by{" "}
-            <a
-              href="https://pinecone.mn/"
-              className="font-[550] text-[#3b73ed] text-[12px]"
-            >
-              Pinecone academy
-            </a>
-          </p>
         </div>
       </section>
     </div>
