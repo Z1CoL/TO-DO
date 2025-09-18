@@ -5,9 +5,10 @@ import { TaskItems } from "@/components/Tasks";
 import { useState } from "react";
 
 export default function Home() {
+  const [count, setCount] = useState(0);
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [filter, setFilter] = useState("All"); // 👈 filter state
+  const [filter, setFilter] = useState("All");
 
   const handleOnChange = (event) => {
     setInputValue(event.target.value);
@@ -15,7 +16,7 @@ export default function Home() {
 
   const handleOnClick = () => {
     if (inputValue === "") return;
-    setTodos([...todos, { text: inputValue, completed: false }]); // 👈 todo-г обьект болголоо
+    setTodos([...todos, { text: inputValue, completed: false }]);
     setInputValue("");
   };
 
@@ -30,11 +31,25 @@ export default function Home() {
       )
     );
   };
+
+  const incrementCount = () => {
+    setCount + 1;
+  };
+
+  const decrementCount = () => {
+    setCount - 1;
+  };
+
   const filteredTodos = todos.filter((todo) => {
     if (filter === "Active") return !todo.completed;
     if (filter === "Completed") return todo.completed;
     return true;
   });
+
+  const twoInOne = () => {
+    handleOnClick();
+    incrementCount();
+  };
 
   return (
     <div>
@@ -54,7 +69,7 @@ export default function Home() {
             />
 
             <button
-              onClick={handleOnClick}
+              onClick={twoInOne}
               className="bg-[#3c82f6] ml-[6px] text-[#f9f9f9] text-sm rounded-[6px] cursor-pointer w-[59px] h-[40px] border-none text-[14px]"
             >
               Add
@@ -82,6 +97,17 @@ export default function Home() {
               No tasks yet. Add one above!
             </p>
           )}
+
+          <div className=" flex place-content-between w-full text-[#6B7280]">
+            <p>{count} of tasks completed</p>
+
+            <button className="border-none text-[#ef4444] ">
+              Clear completed
+            </button>
+          </div>
+          <p className="">
+            Powered by <a href="https://pinecone.mn/">Pinecone Academy</a>
+          </p>
         </div>
       </section>
     </div>
